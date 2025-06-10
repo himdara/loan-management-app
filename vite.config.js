@@ -1,16 +1,14 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
-import { resolve } from 'path';
-import { fileURLToPath } from 'url';
 
+// https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
-  root: '.',
-  publicDir: 'public',
+  // --- REMOVE 'root' and 'publicDir' and ADD 'base' ---
+  // These are often defaults and can sometimes cause conflicts if explicitly set
+  // in certain hosting environments.
+  base: '/', // Ensures the build output assumes it's served from the root path
   build: {
-    outDir: 'dist',
-  },
-  server: {
-    historyApiFallback: true, // for React Router (SPA)
+    outDir: 'dist', // This remains correct
   },
 });
